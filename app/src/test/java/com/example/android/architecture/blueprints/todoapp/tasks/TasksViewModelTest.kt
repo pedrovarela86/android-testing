@@ -2,6 +2,8 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.android.architecture.blueprints.todoapp.data.Task
+import com.example.android.architecture.blueprints.todoapp.data.source.FakeTestRepository
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
 import com.google.common.truth.Truth
 import org.junit.Before
@@ -9,7 +11,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class TasksViewModelTest {
 
     // Subject under test
@@ -21,7 +22,12 @@ class TasksViewModelTest {
 
     @Before
     fun setupViewModel() {
-        taskViewModel = TasksViewModel()
+        val taskRepository = FakeTestRepository()
+        val task1 = Task("Title1", "Description 1")
+        val task2 = Task("Title1", "Description 2", true)
+        val task3 = Task("Title1", "Description 3", true)
+        taskRepository.addTasks(task1, task2, task3)
+        taskViewModel = TasksViewModel(taskRepository)
     }
 
     @Test
