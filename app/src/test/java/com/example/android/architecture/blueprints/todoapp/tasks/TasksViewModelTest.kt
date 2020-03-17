@@ -1,7 +1,6 @@
 package com.example.android.architecture.blueprints.todoapp.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
 import com.google.common.truth.Truth
@@ -22,7 +21,7 @@ class TasksViewModelTest {
 
     @Before
     fun setupViewModel() {
-        taskViewModel = TasksViewModel(ApplicationProvider.getApplicationContext())
+        taskViewModel = TasksViewModel()
     }
 
     @Test
