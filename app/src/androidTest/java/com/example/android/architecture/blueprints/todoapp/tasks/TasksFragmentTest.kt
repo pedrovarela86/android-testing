@@ -26,12 +26,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
-import org.mockito.junit.MockitoJUnitRunner
 
 /**
  * Integration test for the Task List screen.
  */
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(AndroidJUnit4::class)
 @MediumTest
 @ExperimentalCoroutinesApi
 class TasksFragmentTest {
