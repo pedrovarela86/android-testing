@@ -27,7 +27,7 @@ import com.example.android.architecture.blueprints.todoapp.TodoApplication
 import com.example.android.architecture.blueprints.todoapp.databinding.TaskdetailFragBinding
 import com.example.android.architecture.blueprints.todoapp.tasks.DELETE_RESULT_OK
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
-import com.example.android.architecture.blueprints.todoapp.util.setupSnackbar
+import com.example.android.architecture.blueprints.todoapp.util.setupSnackBar
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -45,7 +45,7 @@ class TaskDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupFab()
-        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
+        view?.setupSnackBar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
         setupNavigation()
         this.setupRefreshLayout(viewDataBinding.refreshLayout)
     }

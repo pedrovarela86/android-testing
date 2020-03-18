@@ -31,38 +31,38 @@ import com.example.android.architecture.blueprints.todoapp.ScrollChildSwipeRefre
 import com.google.android.material.snackbar.Snackbar
 
 /**
- * Transforms static java function Snackbar.make() to an extension function on View.
+ * Transforms static java function SnackBar.make() to an extension function on View.
  */
-fun View.showSnackbar(snackbarText: String, timeLength: Int) {
-    Snackbar.make(this, snackbarText, timeLength).run {
+fun View.showSnackBar(snackBarText: String, timeLength: Int) {
+    Snackbar.make(this, snackBarText, timeLength).run {
         show()
     }
 }
 
 /**
- * Triggers a snackbar message when the value contained by snackbarTaskMessageLiveEvent is modified.
+ * Triggers a snack bar message when the value contained by snackBarTaskMessageLiveEvent is modified.
  */
-fun View.setupSnackbar(
-    lifecycleOwner: LifecycleOwner,
-    snackbarEvent: LiveData<Event<Int>>,
-    timeLength: Int
+fun View.setupSnackBar(
+        lifecycleOwner: LifecycleOwner,
+        snackBarEvent: LiveData<Event<Int>>,
+        timeLength: Int
 ) {
 
-    snackbarEvent.observe(lifecycleOwner, Observer { event ->
+    snackBarEvent.observe(lifecycleOwner, Observer { event ->
         event.getContentIfNotHandled()?.let {
-            showSnackbar(context.getString(it), timeLength)
+            showSnackBar(context.getString(it), timeLength)
         }
     })
 }
 
 fun Fragment.setupRefreshLayout(
-    refreshLayout: ScrollChildSwipeRefreshLayout,
-    scrollUpChild: View? = null
+        refreshLayout: ScrollChildSwipeRefreshLayout,
+        scrollUpChild: View? = null
 ) {
     refreshLayout.setColorSchemeColors(
-        ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-        ContextCompat.getColor(requireActivity(), R.color.colorAccent),
-        ContextCompat.getColor(requireActivity(), R.color.colorPrimaryDark)
+            ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
+            ContextCompat.getColor(requireActivity(), R.color.colorAccent),
+            ContextCompat.getColor(requireActivity(), R.color.colorPrimaryDark)
     )
     // Set the scrolling view in the custom SwipeRefreshLayout.
     scrollUpChild?.let {
