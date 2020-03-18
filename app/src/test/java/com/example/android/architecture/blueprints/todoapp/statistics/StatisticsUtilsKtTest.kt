@@ -2,7 +2,6 @@ package com.example.android.architecture.blueprints.todoapp.statistics
 
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.google.common.truth.Truth
-import org.junit.Assert.*
 import org.junit.Test
 
 class StatisticsUtilsKtTest {
