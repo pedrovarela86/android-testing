@@ -26,7 +26,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class TaskDetailFragmentTest {
 
-    lateinit var repository: TasksRepository
+    private lateinit var repository: TasksRepository
 
     @Before
     fun createRepository() {
