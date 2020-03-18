@@ -6,7 +6,7 @@ import com.example.android.architecture.blueprints.todoapp.data.Result
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import kotlinx.coroutines.runBlocking
 
-class FakeTestRepository : TaskRepository {
+class FakeTestRepository : TasksRepository {
 
     private val tasksServiceData: LinkedHashMap<String, Task> = LinkedHashMap()
 

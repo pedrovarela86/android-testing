@@ -7,13 +7,15 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.R
+import com.example.android.architecture.blueprints.todoapp.ServiceLocator
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.data.source.FakeAndroidTestRepository
-import com.example.android.architecture.blueprints.todoapp.data.source.TaskRepository
+import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.core.IsNot.not
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,11 +26,17 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class TaskDetailFragmentTest {
 
-    lateinit var repository: TaskRepository
+    lateinit var repository: TasksRepository
 
     @Before
     fun createRepository() {
         repository = FakeAndroidTestRepository()
+        ServiceLocator.tasksRepository = repository
+    }
+
+    @After
+    fun cleanupDb() = runBlockingTest {
+        ServiceLocator.resetRepository()
     }
 
     @Test
@@ -49,7 +57,5 @@ class TaskDetailFragmentTest {
         onView(withId(R.id.task_detail_description_text)).check(matches(withText("Description")))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(isDisplayed()))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(not(isChecked())))
-
-        delay(2000)
     }
 }

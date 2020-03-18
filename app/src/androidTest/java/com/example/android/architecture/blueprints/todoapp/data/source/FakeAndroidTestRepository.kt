@@ -10,7 +10,7 @@ import kotlinx.coroutines.runBlocking
 import java.lang.Exception
 
 @VisibleForTesting
-class FakeAndroidTestRepository : TaskRepository {
+class FakeAndroidTestRepository : TasksRepository {
 
     private var tasksServiceData: LinkedHashMap<String, Task> = LinkedHashMap()
 

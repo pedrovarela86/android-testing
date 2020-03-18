@@ -32,7 +32,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
 
     // Note, for testing and architecture purposes, it's bad practice to construct the repository
     // here. We'll show you how to fix this during the codelab
-    private val tasksRepository = (application as TodoApplication).taskRepository
+    private val tasksRepository = (application as TodoApplication).tasksRepository
 
     private val tasks: LiveData<Result<List<Task>>> = tasksRepository.observeTasks()
     private val _dataLoading = MutableLiveData<Boolean>(false)

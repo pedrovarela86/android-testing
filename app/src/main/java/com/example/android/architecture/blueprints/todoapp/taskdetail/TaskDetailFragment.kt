@@ -39,7 +39,7 @@ class TaskDetailFragment : Fragment() {
     private val args: TaskDetailFragmentArgs by navArgs()
 
     private val viewModel by viewModels<TaskDetailViewModel> {
-        TaskDetailViewModelFactory((requireContext().applicationContext as TodoApplication).taskRepository)
+        TaskDetailViewModelFactory((requireContext().applicationContext as TodoApplication).tasksRepository)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
