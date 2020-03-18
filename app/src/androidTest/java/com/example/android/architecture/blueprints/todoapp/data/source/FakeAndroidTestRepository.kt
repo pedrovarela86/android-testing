@@ -43,10 +43,10 @@ class FakeAndroidTestRepository : TaskRepository {
         return observableTasks.map { tasks ->
             when (tasks) {
                 is Result.Loading -> Result.Loading
-                is Result.Success -> Result.Error(tasks.exception)
-                is Result.Error -> {
+                is Result.Error -> Result.Error(tasks.exception)
+                is Result.Success -> {
                     val task = tasks.data.firstOrNull() { it.id == taskId }
-                            ?: return@map Error(Exception("Not found"))
+                            ?: return@map Result.Error(Exception("Not found"))
                     Result.Success(task)
                 }
             }
