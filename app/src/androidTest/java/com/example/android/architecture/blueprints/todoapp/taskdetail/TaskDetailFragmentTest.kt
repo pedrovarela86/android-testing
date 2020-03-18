@@ -49,7 +49,6 @@ class TaskDetailFragmentTest {
         // When - Details fragment launched to display the task
         val bundle = TaskDetailFragmentArgs(activeTask.id).toBundle()
         launchFragmentInContainer<TaskDetailFragment>(bundle, R.style.AppTheme)
-
         //Then
         onView(withId(R.id.task_detail_title_text)).check(matches(isDisplayed()))
         onView(withId(R.id.task_detail_title_text)).check(matches(withText("Title")))
@@ -57,6 +56,6 @@ class TaskDetailFragmentTest {
         onView(withId(R.id.task_detail_description_text)).check(matches(withText("Description")))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(isDisplayed()))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(not(isChecked())))
-        delay(200)
+
     }
 }
