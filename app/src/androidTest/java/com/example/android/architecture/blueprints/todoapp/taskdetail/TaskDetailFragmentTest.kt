@@ -59,17 +59,16 @@ class TaskDetailFragmentTest {
         onView(withId(R.id.task_detail_description_text)).check(matches(withText("Description")))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(isDisplayed()))
         onView(withId(R.id.task_detail_complete_checkbox)).check(matches(not(isChecked())))
-
     }
 
     @Test
     fun completedTaskDetails_DisplayedInUi() = runBlockingTest {
 
         // Give - Add task to database
-        repository.saveTask(activeTask)
+        repository.saveTask(completedTask)
 
         // When details fragment launched to display task
-        val bundle = TaskDetailFragmentArgs(activeTask.id).toBundle()
+        val bundle = TaskDetailFragmentArgs(completedTask.id).toBundle()
         launchFragmentInContainer<TaskDetailFragment>(bundle, R.style.AppTheme)
 
         // Then
