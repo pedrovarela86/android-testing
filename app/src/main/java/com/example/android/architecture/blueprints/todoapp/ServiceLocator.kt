@@ -47,7 +47,9 @@ object ServiceLocator {
     }
 
     private fun createTasksRepository(context: Context): TasksRepository {
-        val newRepo = DefaultTasksRepository(TasksRemoteDataSource, createTaskLocalDataSource(context))
+        val localDataSource = createTaskLocalDataSource(context)
+        val remoteDataSource = TasksRemoteDataSource
+        val newRepo = DefaultTasksRepository(remoteDataSource, localDataSource)
         tasksRepository = newRepo
         return newRepo
     }
